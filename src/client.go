@@ -22,8 +22,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"thirfttutorial/tutorial"
+
 	"github.com/apache/thrift/lib/go/thrift"
-	"thirfttutorial/gen-go/tutorial"
 )
 
 var defaultCtx = context.Background()

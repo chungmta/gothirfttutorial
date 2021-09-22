@@ -31,7 +31,7 @@ namespace perl shared
 namespace php shared
 namespace haxe shared
 namespace netstd shared
-
+namespace go thirfttutorial.shared
 
 struct SharedStruct {
   1: i32 key

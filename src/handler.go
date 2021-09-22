@@ -23,8 +23,8 @@ import (
 	"context"
 	"fmt"
 	"strconv"
-	"thirfttutorial/gen-go/shared"
-	"thirfttutorial/gen-go/tutorial"
+	"thirfttutorial/shared"
+	"thirfttutorial/tutorial"
 )
 
 type CalculatorHandler struct {
