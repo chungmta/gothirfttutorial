@@ -68,13 +68,13 @@ func handleClient(client *tutorial.CalculatorClient) (err error) {
 		fmt.Print("15-10=", diff, "\n")
 	}
 
-	//log, err := client.GetStruct(defaultCtx, 1)
-	//if err != nil {
-	//	fmt.Println("Unable to get struct:", err)
-	//	return err
-	//} else {
-	//	fmt.Println("Check log:", log.Value)
-	//}
+	log, err := client.GetStruct(defaultCtx, 1)
+	if err != nil {
+		fmt.Println("Unable to get struct:", err)
+		return err
+	} else {
+		fmt.Println("Check log:", log.Value)
+	}
 	return err
 }
 
