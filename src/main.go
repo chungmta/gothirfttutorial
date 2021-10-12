@@ -24,6 +24,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/apache/thrift/lib/go/thrift"
+	"log"
 	"os"
 	"thirfttutorial/src/bigsetclient"
 )
@@ -36,11 +37,11 @@ func Usage() {
 
 func main() {
 	flag.Usage = Usage
-	server := flag.Bool("server", false, "Run server")
+	//server := flag.Bool("server", false, "Run server")
 	protocol := flag.String("P", "binary", "Specify the protocol (binary, compact, json, simplejson)")
-	framed := flag.Bool("framed", false, "Use framed transport")
-	buffered := flag.Bool("buffered", false, "Use buffered transport")
-	addr := flag.String("addr", "localhost:20504", "Address to listen to")
+	framed := flag.Bool("framed", true, "Use framed transport")
+	buffered := flag.Bool("buffered", true, "Use buffered transport")
+	addr := flag.String("addr", "0.0.0.0:18990", "Address to listen to")
 	secure := flag.Bool("secure", false, "Use tls secure transport")
 
 	flag.Parse()
@@ -77,17 +78,17 @@ func main() {
 		transportFactory = thrift.NewTFramedTransportFactoryConf(transportFactory, cfg)
 	}
 
-	if *server {
-		if err := runServer(transportFactory, protocolFactory, *addr, *secure); err != nil {
-			fmt.Println("error running server:", err)
-		}
-	} else {
+	//if *server {
+	//	if err := runServer(transportFactory, protocolFactory, *addr, *secure); err != nil {
+	//		fmt.Println("error running server:", err)
+	//	}
+	//} else {
 		//if err := runClient(transportFactory, protocolFactory, *addr, *secure, cfg); err != nil {
 		//	fmt.Println("error running client:", err)
 		//}
-
+		log.Println(*addr, ": addr")
 		if err := bigsetclient.RunClient(transportFactory, protocolFactory, *addr, *secure, cfg); err != nil {
 			fmt.Println("err run ---", err)
 		}
-	}
+	//}
 }
