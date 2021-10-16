@@ -102,7 +102,7 @@ enum TErrorCode{
     EBigSetCreated, // created new bigset ID
     EBigSetAlreadyExisted,
     EBigSetAssigned, //assigned a bigset name to a specific IDs.
-}SharedService
+}
 
 struct TItemResult{
     1: TErrorCode error, // 0: ok, -1 : error
