@@ -22,8 +22,9 @@ package main
 import (
 	"crypto/tls"
 	"fmt"
-	"github.com/apache/thrift/lib/go/thrift"
 	"thirfttutorial/gen-go/tutorial"
+
+	"github.com/apache/thrift/lib/go/thrift"
 )
 
 func runServer(transportFactory thrift.TTransportFactory, protocolFactory thrift.TProtocolFactory, addr string, secure bool) error {
@@ -49,9 +50,9 @@ func runServer(transportFactory thrift.TTransportFactory, protocolFactory thrift
 	handler := NewCalculatorHandler()
 	processor := tutorial.NewCalculatorProcessor(handler)
 
-	multiProcessor := thrift.NewTMultiplexedProcessor()
+	//multiProcessor := thrift.NewTMultiplexedProcessor()
 
-	server := thrift.NewTSimpleServer4(multiProcessor.DefaultProcessor, transport, transportFactory, protocolFactory)
+	server := thrift.NewTSimpleServer4(processor, transport, transportFactory, protocolFactory)
 
 	fmt.Println("Starting the simple server... on ", addr)
 	return server.Serve()

@@ -17,6 +17,9 @@ var _ = context.Background
 var _ = time.Now
 var _ = bytes.Equal
 
+// This Thrift file can be included by other Thrift files that want to share
+// these definitions.
+// 
 // Attributes:
 //  - Key
 //  - Value
